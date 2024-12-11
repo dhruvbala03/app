@@ -34,9 +34,3 @@ st.button('Go', on_click=write_forecast)
 if st.session_state['strategy']:
     st.subheader('Recommended Strategy:')
 st.write(st.session_state['strategy'])
-
-
-
-
-
-

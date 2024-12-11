@@ -4,12 +4,10 @@ from datetime import datetime
 import streamlit as st
 import plotly.graph_objects as go
 
-from pages.resources.helper_functions import ALL_TICKERS, get_stock_name, get_train_test_data, generate_historical_predictions, generate_forecast
+from pages.resources.helper_functions import * #ALL_TICKERS, get_stock_name, get_train_test_data, generate_historical_predictions, generate_forecast
 
-# Stock Predictions
-
-st.title('Stock Trend Prediction')
-selected_ticker = st.selectbox('Select Stock', ALL_TICKERS, 39, format_func = lambda ticker : get_stock_name(ticker))
+st.title('Stock Price Forecasts')
+selected_ticker = st.selectbox('Select Stock', ALL_TICKERS, 39, format_func = lambda ticker : f"{get_stock_name(ticker)} ({ticker})")
 
 try:
     train_df, test_df = get_train_test_data(selected_ticker)
@@ -51,9 +49,4 @@ try:
     st.write(forecast_df)
 except:
     st.write(f'Sorry, no information could be found on {selected_ticker}.')
-
-
-
-
-
 
